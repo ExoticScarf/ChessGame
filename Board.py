@@ -1,5 +1,4 @@
 import os
-import random
 
 """
    1 2 3 4 5 6 7 8
@@ -12,9 +11,18 @@ import random
  G
  H
 """
-Letters = "ABCDEFGH"
+Letters = "_ABCDEFGH"
 Board_Height = 9
 Board_Length = 9
+
+## Item 0 is identifier
+Pawn = ["Pawn", " P ", " p "]
+Bishop = ["Bishop", " B ", " b "]
+Knight = ["Knight", " N ", " n "]
+Rook = ["Rook", " R ", " r "]
+Queen = ["Queen", " Q ", " q "]
+King = ["King", " K ", " k "]
+Pieces = [Pawn, Bishop, Knight, Rook, Queen, King]
 
 def MakeBoard(): ## Do not use more than once
     
@@ -29,17 +37,48 @@ def MakeBoard(): ## Do not use more than once
             elif y == 0 and x != 0:
                 Board[y].append(" " + str(x) + " ")
             elif x == 0 and y != 0:
-                Board[y].append(" " + Letters[y - 1] + " ")
+                Board[y].append(" " + Letters[y] + " ")
             else:
                 Board[y].append(" . ")
-            
-            
-        
+    y = 1
+    Side = 0
+    while True:
+        Side += 1
+
+        if Side == 3:
+            break
+
+        for x in range(Board_Length):
+            if x == 1:
+                UpdateBoard(Board, y, x, Pieces[3][Side])
+            if x == 2:
+                UpdateBoard(Board, y, x, Pieces[2][Side])
+            if x == 3:
+                UpdateBoard(Board, y, x, Pieces[1][Side])
+            if x == 4:
+                UpdateBoard(Board, y, x, Pieces[4][Side])
+            if x == 5:
+                UpdateBoard(Board, y, x, Pieces[5][Side])
+            if x == 6:
+                UpdateBoard(Board, y, x, Pieces[1][Side])
+            if x == 7:
+                UpdateBoard(Board, y, x, Pieces[2][Side])
+            if x == 8:
+                UpdateBoard(Board, y, x, Pieces[3][Side])
+
+        if y == 1:
+            y += 1
+        else:
+            y -= 1
+
+        for x in range(Board_Length - 1):
+            UpdateBoard(Board, y, x + 1, Pieces[0][Side])
+
+        y = 8
 
 
-def UpdateBoard(Board, Update_y, Update_x, Update): ## Updates board with new value
-    pass                                            ## with Update_y and _x being the coords
-    
+def UpdateBoard(Board, Update_y, Update_x, Update):
+    Board[Update_y][Update_x] = Update
 
 ##  Turns Board into a multiline string
 def GetPrintBoard():
