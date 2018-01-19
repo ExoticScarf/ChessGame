@@ -51,19 +51,23 @@ def MakeBoard(): ## Do not use more than once
         for x in range(Board_Length):
             if x == 1:
                 UpdateBoard(Board, y, x, Pieces[3][Side])
-            if x == 2:
+            elif x == 2:
                 UpdateBoard(Board, y, x, Pieces[2][Side])
-            if x == 3:
+            elif x == 3:
                 UpdateBoard(Board, y, x, Pieces[1][Side])
-            if x == 4:
+            elif x == 4 and y == 1:
                 UpdateBoard(Board, y, x, Pieces[4][Side])
-            if x == 5:
+            elif x == 4 and y == 8:
+                UpdateBpard(Board, y, x, Pieces[5][Side])                
+            elif x == 5 and y == 1:
                 UpdateBoard(Board, y, x, Pieces[5][Side])
-            if x == 6:
+            elif x == 5 and y == 8:
+                UpdateBoard(Board, y, x, Pieces[4][Side])
+            elif x == 6:
                 UpdateBoard(Board, y, x, Pieces[1][Side])
-            if x == 7:
+            elif x == 7:
                 UpdateBoard(Board, y, x, Pieces[2][Side])
-            if x == 8:
+            elif x == 8:
                 UpdateBoard(Board, y, x, Pieces[3][Side])
 
         if y == 1:
