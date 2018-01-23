@@ -58,7 +58,7 @@ def MakeBoard(): ## Do not use more than once
             elif x == 4 and y == 1:
                 UpdateBoard(Board, y, x, Pieces[4][Side])
             elif x == 4 and y == 8:
-                UpdateBpard(Board, y, x, Pieces[5][Side])                
+                UpdateBoard(Board, y, x, Pieces[5][Side])                
             elif x == 5 and y == 1:
                 UpdateBoard(Board, y, x, Pieces[5][Side])
             elif x == 5 and y == 8:

@@ -183,7 +183,33 @@ def QueenMove():
         print("Invalid Target")
 
 def KingMove():
-    pass
+    if SelectedPiece == " K " and Player == 1:
+        if Target_x == Location_x + 1 or Target_x == Location_x - 1 or Target_x == Location_x:
+            if Target_y == Location_y + 1 or Target_y == Location_y - 1 or Target_y == Location_y:
+                if CheckTargetValid():
+                    UpdateBoard(Board, Target_y, Target_x, " K ")
+                    UpdateBoard(Board, Location_y, Location_x, " . ")
+                    GetPrintBoard()
+                else:
+                    print("Invalid Target")
+            else:
+                print("Invalid Target")
+        else:
+            print("Invalid Target")
+
+    elif SelectedPiece == " k " and Player == 2:
+        if Target_x == Location_x + 1 or Target_x == Location_x - 1 or Target_x == Location_x:
+            if Target_y == Location_y + 1 or Target_y == Location_y - 1 or Target_y == Location_y:
+                if CheckTargetValid():
+                    UpdateBoard(Board, Target_y, Target_x, " k ")
+                    UpdateBoard(Board, Location_y, Location_x, " . ")
+                    GetPrintBoard()
+                else:
+                    print("Invalid Target")
+            else:
+                print("Invalid Target")
+        else:
+            print("Invalid Target")
 
 def CheckTargetValid():
     if Board[Target_y][Target_x] == " . ":
@@ -191,15 +217,20 @@ def CheckTargetValid():
     elif Player == 1:
         for i in range(6):
             if Board[Target_y][Target_x] == Pieces[i][1]:
-                return True
+                Valid = False
+                break
             else:
-                return False
+                Valid = True
     elif Player == 2:
         for i in range(6):
             if Board[Target_y][Target_x] == Pieces[i][2]:
-                return True
+                Valid = False
+                break
             else:
-                return False
+                Valid = True
+
+    return Valid
+
 """
 Need to add a way of checking if their is a piece obstructing movement
 rather than just if the target space is currently occupied by the player's
